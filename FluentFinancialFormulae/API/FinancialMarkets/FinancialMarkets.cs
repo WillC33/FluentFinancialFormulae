@@ -1,6 +1,6 @@
 namespace FluentFinancialFormulae.API.FinancialMarkets;
 
-public partial class FinancialMarkets: IFinancialMarketsBuilder, ICalculations
+public partial class FinancialMarkets: IFinancialMarketsBuilder, IFinancialMarketsCalculations
 {
     //Private constructor
     private FinancialMarkets() { }
@@ -11,7 +11,7 @@ public partial class FinancialMarkets: IFinancialMarketsBuilder, ICalculations
     /// Rate of inflation
     /// </summary>
     /// <returns></returns>
-    public static ICalculations Init()
+    public static IFinancialMarketsCalculations Init()
     {
         return new FinancialMarkets();
     }
