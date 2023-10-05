@@ -2,15 +2,19 @@ using FluentFinancialFormulae.Formulae;
 
 namespace FluentFinancialFormulae.API.FinancialMarkets;
 
-public partial class FinancialMarkets: IInitialPriceIndex, IEndingPriceIndex, IRateOfInflation
+public partial class FinancialMarkets: IInitialPriceIndex, IEndingPriceIndex, ICalcRateOfInflation
 {
     private decimal _initialConsumerPriceIndex { get; set; }
     private decimal _endingConsumerPriceIndex { get; set; }
 
     
-    public IInitialPriceIndex RateOfInflation()
+    /// <summary>
+    /// Initialises the Rate of inflation method
+    /// </summary>
+    /// <returns></returns>
+    public static IInitialPriceIndex RateOfInflation()
     {
-        return this;
+        return new FinancialMarkets();
     }
     
     /// <summary>
@@ -29,7 +33,7 @@ public partial class FinancialMarkets: IInitialPriceIndex, IEndingPriceIndex, IR
     /// </summary>
     /// <param name="endingPriceIndex">The Ending Consumer Price Index</param>
     /// <returns></returns>
-    public IRateOfInflation WithEndingConsumerPriceIndex(decimal endingPriceIndex)
+    public ICalcRateOfInflation WithEndingConsumerPriceIndex(decimal endingPriceIndex)
     {
         _endingConsumerPriceIndex = endingPriceIndex;
         return this;

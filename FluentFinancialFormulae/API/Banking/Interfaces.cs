@@ -4,24 +4,66 @@ namespace FluentFinancialFormulae.API.Banking;
 
 public interface IBankingBuilder
 {
-    public static abstract IBankingCalculations Init();
-}
-
-public interface IBankingCalculations
-{
-    public IStatedInterestRate AnnualPercentageYield();
-    public IPresentValue BalloonLoanPayment();
-    public IPrincipalValue CompoundInterest();
+    public static abstract IStatedInterestRate AnnualPercentageYield();
+    public static abstract IPresentValue BalloonLoanPayment();
+    /*public IPrincipalValue CompoundInterest();
     public IPrincipalValue ContinuousCompounding();
     public IMonthlyDebt DebtToIncomeRatio();
-    public I BalloonBalanceOfLoan();
-    public I LoanPayment();
-    public I RemainingBalanceOnLoan();
-    public I LoanToDepositRatio();
-    public I LoanToValueRatio();
-    public I SimpleInterest();
-    public I SimpleInterestRate();
-    public I SimpleInterestPrincipal();
-    public I SimpleInterestTime();
-
+    public IPresentValue BalloonBalanceOfLoan();
+    public IPresentValue LoanPayment();
+    public IPresentValue RemainingBalanceOnLoan();
+    public ILoans LoanToDepositRatio();
+    public ILoanAmount LoanToValueRatio();
+    public IPrincipalValue SimpleInterest();
+    public IPrincipalValue SimpleInterestRate();
+    public IInterest SimpleInterestPrincipal();
+    public IPrincipalValue SimpleInterestTime();*/
 }
+
+#region AnnualPercentageYield
+
+public interface IStatedInterestRate
+{
+    public ICompoundingPeriods WithInterestRate(decimal _);
+}
+
+public interface ICompoundingPeriods
+{
+    public IAnnualPercentageYield WithCompoundingPeriods(decimal _);
+}
+
+public interface IAnnualPercentageYield
+{
+    public decimal CalculateAnnualPercentageYield();
+}
+
+#endregion
+
+#region BalloonLoanPayment
+
+public interface IPresentValue
+{
+    public IBalloonAmount WithPresentValue(decimal _);
+}
+
+public interface IBalloonAmount
+{
+    public IRatePerPeriod WithBaloonAmount(decimal _);
+}
+
+public interface IRatePerPeriod
+{
+    public INumberOfPeriods WithPeriodRate(decimal _);
+}
+
+public interface INumberOfPeriods
+{
+    public IBalloonLoanPayment WithPeriods(decimal _);
+}
+
+public interface IBalloonLoanPayment
+{
+    public decimal CalculateBalloonLoanPayment();
+}
+
+#endregion

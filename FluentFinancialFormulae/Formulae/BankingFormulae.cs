@@ -3,7 +3,7 @@ namespace FluentFinancialFormulae.Formulae;
     /// <summary>
     /// A collection of methods for solving Banking-focused Finance/Accounting equations.
     /// </summary>
-    static class BankingFormulae
+    internal static class BankingFormulae
     {
         /// <summary>
         /// Calculates Annual Percentage Yield from Stated Annual Interest Rate and Number of Times Compounded
@@ -11,7 +11,7 @@ namespace FluentFinancialFormulae.Formulae;
         /// <param name="statedAnnualInterestRate">Stated Annual Interest Rate</param>
         /// <param name="numberOfTimesCompounded">Number of Times Compounded</param>
         /// <returns>Decimal value for Annual Percentage Yield</returns>
-        static decimal CalcAnnualPercentageYield(decimal statedAnnualInterestRate, decimal numberOfTimesCompounded)
+        internal static decimal CalcAnnualPercentageYield(decimal statedAnnualInterestRate, decimal numberOfTimesCompounded)
         {
             return (decimal)Math.Pow((double)(1 + (statedAnnualInterestRate / numberOfTimesCompounded)), (double)numberOfTimesCompounded) - 1;
         }
@@ -24,7 +24,7 @@ namespace FluentFinancialFormulae.Formulae;
         /// <param name="ratePerPeriod">Rate Per Period</param>
         /// <param name="numberOfPeriods">Number of Periods</param>
         /// <returns>Decimal value for Balloon Loan Payment</returns>
-        static decimal CalcBalloonLoanPayment(decimal presentValue, decimal balloonAmount, decimal ratePerPeriod, decimal numberOfPeriods)
+        internal static decimal CalcBalloonLoanPayment(decimal presentValue, decimal balloonAmount, decimal ratePerPeriod, decimal numberOfPeriods)
         {
             decimal pvOfPeriodicPayments = (presentValue - (balloonAmount / (decimal)Math.Pow((double)(1 + ratePerPeriod), (double)numberOfPeriods)));
             decimal annuityPaymentFactor = (ratePerPeriod / (1 - (decimal)Math.Pow((double)(1 + ratePerPeriod), (double)-numberOfPeriods)));

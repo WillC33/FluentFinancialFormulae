@@ -8,9 +8,13 @@ public partial class FinancialMarkets: INominalRate, IInflationRate, IRateOfRetu
     private decimal _inflationRate { get; set; }
 
 
-    public INominalRate RealRateOfReturn()
+    /// <summary>
+    /// Initialises the rate of return method
+    /// </summary>
+    /// <returns></returns>
+    public static INominalRate RealRateOfReturn()
     {
-        return this;
+        return new FinancialMarkets();
     }
     
     /// <summary>
