@@ -1,20 +1,18 @@
+using FluentFinancialFormulae.API.FinancialMarkets;
 using FluentFinancialFormulae.Formulae;
 
-namespace FluentFinancialFormulae.API.FinancialMarkets;
+namespace FluentFinancialFormulae.API;
 
-public partial class FinancialMarkets: INominalRate, IInflationRate, IRateOfReturn
+public class RealRateOfReturn : IRealRateOfReturn, INominalRate, IInflationRate, IRateOfReturn
 {
     private decimal _nominalRate { get; set; }
     private decimal _inflationRate { get; set; }
+    
+    private RealRateOfReturn() { }
 
-
-    /// <summary>
-    /// Initialises the rate of return method
-    /// </summary>
-    /// <returns></returns>
-    public static INominalRate RealRateOfReturn()
+    public static INominalRate Init()
     {
-        return new FinancialMarkets();
+        return new RealRateOfReturn();
     }
     
     /// <summary>

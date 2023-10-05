@@ -6,8 +6,8 @@ public interface IBankingBuilder
 {
     public static abstract IStatedInterestRate AnnualPercentageYield();
     public static abstract IPresentValue BalloonLoanPayment();
-    /*public IPrincipalValue CompoundInterest();
-    public IPrincipalValue ContinuousCompounding();
+    public static abstract IPrincipalValue CompoundInterest();
+    /*public IPrincipalValue ContinuousCompounding();
     public IMonthlyDebt DebtToIncomeRatio();
     public IPresentValue BalloonBalanceOfLoan();
     public IPresentValue LoanPayment();
@@ -51,7 +51,7 @@ public interface IBalloonAmount
     public IRatePerPeriod WithBaloonAmount(decimal _);
 }
 
-public interface IRatePerPeriod
+public partial interface IRatePerPeriod
 {
     public INumberOfPeriods WithPeriodRate(decimal _);
 }
@@ -65,5 +65,20 @@ public interface IBalloonLoanPayment
 {
     public decimal CalculateBalloonLoanPayment();
 }
+
+#endregion
+
+#region CompoundInterest
+
+public interface IPrincipalValue
+{
+    public IRatePerPeriod WithPrincipal(decimal _);
+}
+
+public partial interface IRatePerPeriod
+{
+    //located in another method
+}
+
 
 #endregion

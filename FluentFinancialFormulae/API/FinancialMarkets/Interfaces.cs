@@ -1,9 +1,13 @@
 namespace FluentFinancialFormulae.API.FinancialMarkets;
 
-public interface IFinancialMarketsBuilder
+public interface IRealRateOfReturn
 {
-    public static abstract IInitialPriceIndex RateOfInflation();
-    public static abstract INominalRate RealRateOfReturn();
+    public static abstract INominalRate Init();
+}
+
+public interface IRateOfInflation
+{
+    public static abstract IInitialPriceIndex Init();
 }
 
 #region RateOfInflation

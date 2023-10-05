@@ -1,20 +1,22 @@
+using FluentFinancialFormulae.API.FinancialMarkets;
 using FluentFinancialFormulae.Formulae;
 
-namespace FluentFinancialFormulae.API.FinancialMarkets;
+namespace FluentFinancialFormulae.API;
 
-public partial class FinancialMarkets: IInitialPriceIndex, IEndingPriceIndex, ICalcRateOfInflation
+public class RateOfInflation : IRateOfInflation, IInitialPriceIndex, IEndingPriceIndex, ICalcRateOfInflation
 {
     private decimal _initialConsumerPriceIndex { get; set; }
     private decimal _endingConsumerPriceIndex { get; set; }
 
-    
+    private RateOfInflation() { }
+
     /// <summary>
     /// Initialises the Rate of inflation method
     /// </summary>
     /// <returns></returns>
-    public static IInitialPriceIndex RateOfInflation()
+    public static IInitialPriceIndex Init()
     {
-        return new FinancialMarkets();
+        return new RateOfInflation();
     }
     
     /// <summary>
